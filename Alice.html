@@ -2,7 +2,7 @@
 <html lang="ja">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width">
+        <meta name="viewport" ient="width=device-width">
         <link rel="icon" href="https://rento2177.github.io/sydx/Vaa2.png">
         <link rel="stylesheet" href="./style.css">
         <title>フォーム自動入力</title>
@@ -52,6 +52,12 @@
             }
         }
         //さらにXSS対策
+        if (a.length >= 64) {
+            alert("XSS検知に引っ掛かりました。データを削除します。");
+            localStorage.clear();
+            return;
+        }
+
         if (!(isNaN(b))) {
             alert("XSS検知に引っ掛かりました。データを削除します。");
             localStorage.clear();
@@ -76,6 +82,9 @@
     let u = new Date();
     let e = String(u.getMonth()+1);
     let o = String(u.getDate());
+    if (o => 1 || o <= 9) {
+        o = "0" + o;
+    }
     let ka = e + o;
 
     //エラー検知予備軍
