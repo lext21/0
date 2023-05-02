@@ -30,6 +30,15 @@
 <script type="text/javascript">
     function clicked(a, b) {
         //エラー検知
+        if (a.charAt(0) == "0") {
+            while (true) {
+                a = a.slice(1);
+                if (a.charAt(0) != 0) {
+                    break;
+                }
+            }
+        }
+
         if (!(a.length >= 1)) {
             while (true) {
                 a = prompt("正しい出席番号を入力してください。");
