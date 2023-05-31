@@ -2,7 +2,7 @@
 <html lang="ja">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width">
+        <meta name="viewport" ient="width=device-width">
         <link rel="icon" href="https://rento2177.github.io/sydx/Vaa2.png">
         <link rel="stylesheet" href="./style.css">
         <title>フォーム自動入力</title>
@@ -24,6 +24,8 @@
             </li><br>
             <input type="button" onclick="clicked(document.getElementById('number').value, document.getElementById('name').value);" value="情報を保存">
         </ul>
+        <br>
+        <small>更新内容:バグ修正(5/12)</small>
     </body>
 </html>
 
@@ -77,7 +79,7 @@
         localStorage.setItem("wi", b);
         if (confirm("フォームに飛びますか？")) {
             console.log("janp");
-            location.href = `https://docs.google.com/forms/d/e/1FAIpQLScFvuLgFKzIk5QtMzywRCYsfivkCdOlsO2dAxV2MT6qPwhGLg/viewform?entry.81919075=` + ka + `&entry.718367099=%EF%BD%89%EF%BC%91&entry.366340186=` + a + `&entry.1098113419=` + b + `&entry.733240652=%E5%87%BA%E5%B8%AD+%E2%80%BB%E8%A6%8B%E5%AD%A6%E5%90%AB%E3%82%80`;
+            window.open(`https://docs.google.com/forms/d/e/1FAIpQLScFvuLgFKzIk5QtMzywRCYsfivkCdOlsO2dAxV2MT6qPwhGLg/viewform?entry.81919075=` + ka + `&entry.718367099=%EF%BD%89%EF%BC%91&entry.366340186=` + a + `&entry.1098113419=` + b + `&entry.733240652=%E5%87%BA%E5%B8%AD+%E2%80%BB%E8%A6%8B%E5%AD%A6%E5%90%AB%E3%82%80`);
         } else {
             return;
         }
