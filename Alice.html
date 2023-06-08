@@ -2,14 +2,15 @@
 <html lang="ja">
     <head>
         <meta charset="utf-8">
+        <meta name="robots" content="noindex">
         <meta name="viewport" content="width=device-width">
-        <link rel="icon" href="https://rento2177.github.io/sydx/Vaa2.png">
+        <link rel="icon" href="">
         <link rel="stylesheet" href="./style.css">
-        <title>フォーム自動入力</title>
+        <title>autofill - jp</title>
     </head>
     <body>
         <h1 class="siteName">🐡  Forms autofill.🚴‍♂️💫</h1>
-        <small>&nbsp;&nbsp;※入力データはlocalStorageを利用して保存されます。</small>
+        <small>&nbsp;&nbsp;入力データはlocalStorageを利用して保存されます。</small>
         <hr>
         <div id="date"></div>
         <div style="color: blue;"><< 初期設定 >></div>
@@ -22,14 +23,22 @@
             <li>
                 <input type="text" id="name" placeholder="例:天童亜吏">
             </li><br>
-            <input type="button" onclick="clicked(document.getElementById('number').value, document.getElementById('name').value);" value="情報を保存">
+            <input type="button" class="info" onclick="clicked(document.getElementById('number').value, document.getElementById('name').value);" value="情報を保存">
         </ul>
         <br>
-        <small>更新内容:改良版開発中(6/1)</small>
+        <small>※ポップアップがブロックされる場合は許可してください。</small><br>
+        <small>URL:<input type="button" class="copyText" onclick="copy();" value="コピー"></small>
+        <small class="copy"> chrome://settings/content/popups</small>
     </body>
 </html>
-
 <script type="text/javascript">
+    function copy() {
+        const COPY_BT = document.querySelector('.copyText');
+
+        navigator.clipboard.writeText("chrome://settings/content/popups");
+        alert("URLをコピーしました。\n検索バーに入力してポップアップの使用を許可してください。");
+    }
+
     function clicked(a, b) {
         //エラー検知
         if (a.charAt(0) == "0") {
@@ -63,21 +72,27 @@
             }
         }
         //さらにXSS対策
-        if (a.length >= 64) {
-            alert("XSS検知に引っ掛かりました。データを削除します。");
+        if (a.length >= 10) {
+            alert("XSS対策に引っ掛かりました。データを削除します。");
+            localStorage.clear();
+            return;
+        }
+
+        if (b.length >= 10) {
+            alert("XSS対策に引っ掛かりました。データを削除します。");
             localStorage.clear();
             return;
         }
 
         if (!(isNaN(b))) {
-            alert("XSS検知に引っ掛かりました。データを削除します。");
+            alert("XSS対策に引っ掛かりました。データを削除します。");
             localStorage.clear();
             return;
         }
         
         localStorage.setItem("wa", a);
         localStorage.setItem("wi", b);
-        if (confirm("フォームに飛びますか？")) {
+        if (confirm("フォームに飛びますか？ Number: " + a + ", Name: " + b)) {
             console.log("janp");
             window.open(`https://docs.google.com/forms/d/e/1FAIpQLScFvuLgFKzIk5QtMzywRCYsfivkCdOlsO2dAxV2MT6qPwhGLg/viewform?entry.81919075=` + ka + `&entry.718367099=%EF%BD%89%EF%BC%91&entry.366340186=` + a + `&entry.1098113419=` + b + `&entry.733240652=%E5%87%BA%E5%B8%AD+%E2%80%BB%E8%A6%8B%E5%AD%A6%E5%90%AB%E3%82%80`);
         } else {
@@ -97,7 +112,7 @@
         o = "0" + o;
     }
     let ka = e + o;
-
+    
     //エラー検知予備軍
     if (a.number == "null" || a.number == "undefined" || a.number == "") {
         localStorage.removeItem("wa");
