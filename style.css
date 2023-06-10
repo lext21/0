@@ -5,7 +5,9 @@
 
 body {
     font-family: MyFont;
-    margin-left: 50px;
+        @media screen and (min-width: 600px) {
+            margin-left: 50px;
+        }
 }
 
 ul {
