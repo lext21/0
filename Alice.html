@@ -21,24 +21,16 @@
             </li><br>
             <li><div id="i">*</div>氏名を入力</li>
             <li>
-                <input type="text" id="name" placeholder="例:天童亜吏" autocomplete="off">
+                <input type="text" id="name" placeholder="例:黒羽快斗" autocomplete="on">
             </li><br>
             <input type="button" class="info" onclick="clicked(document.getElementById('number').value, document.getElementById('name').value);" value="情報を保存">
         </ul>
-        <br>
-        <small>※ポップアップがブロックされる場合は許可してください。</small><br>
-        <small>URL:<input type="button" class="copyText" onclick="copy();" value="コピー"></small>
-        <small class="copy"> chrome://settings/content/popups</small>
+        <small>元リンクは<a href="https://docs.google.com/forms/d/e/1FAIpQLScFvuLgFKzIk5QtMzywRCYsfivkCdOlsO2dAxV2MT6qPwhGLg/viewform">こちら</a></small><br><br>
+        <small>※ポップアップがブロックされる場合は許可が必要です。</small><br>
+        <small>URL: chrome://settings/content/popups</small>
     </body>
 </html>
 <script type="text/javascript">
-    function copy() {
-        const COPY_BT = document.querySelector('.copyText');
-
-        navigator.clipboard.writeText("chrome://settings/content/popups");
-        alert("URLをコピーしました。\n検索バーに入力してポップアップの使用を許可してください。");
-    }
-
     function clicked(a, b) {
         //エラー検知
         if (a.charAt(0) == "0") {
@@ -93,8 +85,7 @@
         localStorage.setItem("wa", a);
         localStorage.setItem("wi", b);
         if (confirm("フォームに飛びますか？ Number: " + a + ", Name: " + b)) {
-            console.log("janp");
-            window.open(`https://docs.google.com/forms/d/e/1FAIpQLScFvuLgFKzIk5QtMzywRCYsfivkCdOlsO2dAxV2MT6qPwhGLg/viewform?entry.81919075=` + ka + `&entry.718367099=%EF%BD%89%EF%BC%91&entry.366340186=` + a + `&entry.1098113419=` + b + `&entry.733240652=%E5%87%BA%E5%B8%AD+%E2%80%BB%E8%A6%8B%E5%AD%A6%E5%90%AB%E3%82%80`);
+            window.open(`https://docs.google.com/forms/d/e/1FAIpQLScFvuLgFKzIk5QtMzywRCYsfivkCdOlsO2dAxV2MT6qPwhGLg/viewform?entry.81919075=` + ka + `&entry.718367099=%EF%BD%89%EF%BC%91&entry.366340186=` + a + `&entry.1098113419=` + b + `&entry.733240652=%E5%87%BA%E5%B8%AD+%E2%80%BB%E8%A6%8B%E5%AD%A6%E5%90%AB%E3%82%80`, "_blank");
         } else {
             return;
         }
