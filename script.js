@@ -126,5 +126,5 @@ const autofill = (x, y) => {
         name = x + "+" + y;
     }
     console.log(month + day, name);
-    //window.open("https://docs.google.com/forms/d/e/1FAIpQLScskj46IyFUC5uCtPBgs6AfMO32Q7AmWXL3_6cDGlR0p41qeQ/viewform?entry.81919075=" + month + day + "&entry.718367099=ｉ１&entry.558922306=" + name + "&entry.733240652=出席+※見学含む");
+    window.open("https://docs.google.com/forms/d/e/1FAIpQLScskj46IyFUC5uCtPBgs6AfMO32Q7AmWXL3_6cDGlR0p41qeQ/viewform?entry.81919075=" + month + day + "&entry.718367099=ｉ１&entry.558922306=" + name + "&entry.733240652=出席+※見学含む");
 }
