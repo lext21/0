@@ -4,124 +4,112 @@
         <meta charset="utf-8">
         <meta name="robots" content="noindex">
         <meta name="viewport" content="width=device-width">
-        <link rel="icon" href="">
         <link rel="stylesheet" href="./style.css">
-        <title>autofill - jp</title>
+        <title>autofill.v2 -jp</title>
+        <script src="./script.js"></script>
     </head>
     <body>
-        <h1 class="siteName">🐡  Forms autofill.🚴‍♂️💫</h1>
-        <small>&nbsp;&nbsp;入力データはlocalStorageを利用して保存されます。</small>
-        <hr>
-        <div id="date"></div>
-        <div style="color: blue;"><< 初期設定 >></div>
-        <ul>
-            <li><div id="i">*</div>出席番号を入力</li>
-            <li>
-                <input type="number" id="number" placeholder="例:0">
-            </li><br>
-            <li><div id="i">*</div>氏名を入力</li>
-            <li>
-                <input type="text" id="name" placeholder="例:黒羽快斗" autocomplete="on">
-            </li><br>
-            <input type="button" class="info" onclick="clicked(document.getElementById('number').value, document.getElementById('name').value);" value="情報を保存">
-        </ul>
-        <small>元リンクは<a href="https://docs.google.com/forms/d/e/1FAIpQLScFvuLgFKzIk5QtMzywRCYsfivkCdOlsO2dAxV2MT6qPwhGLg/viewform">こちら</a></small><br><br>
-        <small>※ポップアップがブロックされる場合は許可が必要です。</small><br>
-        <small>URL: chrome://settings/content/popups</small>
+        <main id="top">
+            <h2 class="siteName" onclick="page('main')">forsms autofill</h2>
+            <div class="ver">v2.0.0</div>
+            <br>
+            <ul class="header">
+                <li><a onclick="page('notice');">お知らせ</a></li>
+                <li><a onclick="page('info');">データの取り扱い</a></li>
+                <li><a onclick="page('help');">ヘルプ</a></li>
+            </ul>
+        </main>
+        <main id="middle">
+            <div id="date">日付: </div>
+                <hr>
+                <h3 class="title">データ入力</h3>
+                <ul class="input">
+                    <li>出席番号を入力<input type="number" id="number" name="fedeww"></li>
+                    <li>氏名を入力<input type="text" id="text" name="fwetyp"></li>
+                    <li>
+                        <input type="checkbox" id="short">
+                        <label class="detail" for="short">次回からショートカット</label>
+                    </li>
+                    <br>
+                    <li><input type="button" id="decision" value="移動する"></li>
+                    <div class="detail">元リンクは<a href="" onclick="form();">こちら</a></div>
+                </ul>
+                <hr>
+                <ul class="detail">
+                    <li>※データはlocalStorageに保存されます。詳細は<a href="#info" onclick="page('info');">こちら</a></li>
+                    <li>また、サービスのご利用は上記に同意したものとします</li>
+                    <li>※ポップアップがブロックされる場合は許可してください</li>
+                </ul>
+        </main>
+        <main id="detahtml">
+            <aside id="alert">
+                <h3 class="title">Here we go!</h3>
+                <ul class="detail" style="margin-left: 20px;">
+                    <li id="information">読み込みに失敗しました。</li>
+                </ul>
+                <br>
+                <input type="button" id="close" style="margin-right: 10px;" value="戻る">
+                <input type="button" onclick="let c = JSON.parse(info);autofill(c[1], c[2]);" value="進む">
+                <br>
+                <div class="detail">元リンクは<a href="" onclick="form();">こちら</a></div>
+                <script type="text/javascript">
+                    try {
+                        document.getElementById("information").innerHTML = "出席番号: " + JSON.parse(info)[1] + "<br>氏名: " + JSON.parse(info)[2];
+                    } catch {}
+                </script>
+            </aside>
+            <aside id="notice">
+                <h3 class="title">お知らせ</h3>
+                <ul>
+                    <li>注意事項 <span class="detail">R5/9/12</span></li>
+                    <li class="detail">・当サービスの利用はi1(14HR)のみ対応しています</li>
+                    <li class="detail">・ご利用の際は念のためフォームの入力情報を確認してください</li>
+                    <li class="detail">・<a href="#info" onclick="page('info');">データの取り扱い</a>の把握もお願いします</li>
+                </ul>
+                <br>
+            </aside>
+            <aside id="info">
+                <h3 class="title">データの取り扱い</h3>
+                <ul>
+                    <li>注意事項</li>
+                    <li class="detail">・番号と氏名はlocalStorageに保存されます</li>
+                    <li class="detail">・対策情報などはソースコードを参考にしてください</li>
+                </ul>
+                <hr>
+                <ul>
+                    <li>データ管理</li>
+                    <li class="detail" style="margin-top: 10px;margin-bottom: 5px;">＜現在の保存済み情報＞</li>
+                    <li class="detail">
+                        <script>
+                            let d = JSON.parse(info);
+                            try {
+                                document.write("入力スキップ　: " + d[0] + "<br>");
+                                document.write("出席番号　　　: " + d[1] + "<br>");
+                                document.write("氏名　　　　　: " + d[2] + "<br>");
+                            } catch {
+                                document.write("保存されているデータはありません<br>");
+                            }
+                        </script>
+                    </li>
+                    <li class="detail" style="margin-top: 20px;"><input type="button" onclick="localStorage.clear();alert('データを削除しました');location.href = '';" value="データ削除"></li>
+                    <br>
+                </ul>
+            </aside>
+            <aside id="help">
+                <h3 class="title">ヘルプ(…---…)</h3>
+                <ul>
+                    <li>サービスが機能しない場合</li>
+                    <li class="detail">↪サイトを更新してください。またJavaScriptの使用を許可してください</li>
+                    <br>
+                    <li >データが保存されない場合</li>
+                    <li class="detail">↪<a href="https://help.amebaownd.com/posts/616547" target="_blank">こちら</a>のサイトを参考にlocalSorageの利用を許可してください</li>
+                    <br>
+                    <li>不具合やバグなどがある場合</li>
+                    <li class="detail">↪サイトの更新を待ってください</li>
+                    <li class="detail">↪問い合わせフォームの開発は検討中です</li>
+                    <br>
+                </ul>
+            </aside>
+        </main>
     </body>
 </html>
-<script type="text/javascript">
-    function clicked(a, b) {
-        //エラー検知
-        if (a.charAt(0) == "0") {
-            while (true) {
-                a = a.slice(1);
-                if (a.charAt(0) != 0) {
-                    break;
-                }
-            }
-        }
-
-        if (!(a.length >= 1)) {
-            while (true) {
-                a = prompt("正しい出席番号を入力してください。");
-                if (a == null) {
-                    return;
-                } else if (a >= 1) {
-                    break;
-                }
-            }
-        }
-
-        if (!(b.length >= 2)) {
-            while (true) {
-                b = prompt("正しい氏名を入力してください。(苗字含)");
-                if (b == null) {
-                    return;
-                } else if (b.length >= 2) {
-                    break;
-                }
-            }
-        }
-        //さらにXSS対策
-        if (a.length >= 10) {
-            alert("XSS対策に引っ掛かりました。データを削除します。");
-            localStorage.clear();
-            return;
-        }
-
-        if (b.length >= 10) {
-            alert("XSS対策に引っ掛かりました。データを削除します。");
-            localStorage.clear();
-            return;
-        }
-
-        if (!(isNaN(b))) {
-            alert("XSS対策に引っ掛かりました。データを削除します。");
-            localStorage.clear();
-            return;
-        }
-        
-        localStorage.setItem("wa", a);
-        localStorage.setItem("wi", b);
-        if (confirm("フォームに飛びますか？ Number: " + a + ", Name: " + b)) {
-            window.open(`https://docs.google.com/forms/d/e/1FAIpQLScFvuLgFKzIk5QtMzywRCYsfivkCdOlsO2dAxV2MT6qPwhGLg/viewform?entry.81919075=` + ka + `&entry.718367099=%EF%BD%89%EF%BC%91&entry.366340186=` + a + `&entry.1098113419=` + b + `&entry.733240652=%E5%87%BA%E5%B8%AD+%E2%80%BB%E8%A6%8B%E5%AD%A6%E5%90%AB%E3%82%80`, "_blank");
-        } else {
-            return;
-        }
-    }
-
-    //localStorage.clear(); 
-    let a = [];
-    a.number, a.name = "", "";
-    a.number = localStorage.getItem("wa");
-    a.name = localStorage.getItem("wi");
-    let u = new Date();
-    let e = String(u.getMonth()+1);
-    let o = String(u.getDate());
-    if (o <= 9) {
-        o = "0" + o;
-    }
-    let ka = e + o;
-    
-    //エラー検知予備軍
-    if (a.number == "null" || a.number == "undefined" || a.number == "") {
-        localStorage.removeItem("wa");
-        location.href = location.href;
-    }
-
-    if (a.name == "null" || a.name == "undefined" || a.name == "") {
-        localStorage.removeItem("wi");
-        location.href = location.href;
-    }
-
-    if (!(a.number == null || a.number == false) && !(a.name == null || a.number == false)) {
-        document.getElementById("number").value = a.number;
-        document.getElementById("name").value = a.name;
-        clicked(a.number, a.name);
-    }
-    
-    document.getElementById("date").innerHTML = "日付:" + e + "月" + o + "日 >> " + ka + "<br><br>";
-    document.getElementById("number").value = a.number;
-    document.getElementById("name").value = a.name;
-</script>

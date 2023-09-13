@@ -1,85 +1,98 @@
-@font-face {
-    font-family: MyFont;
-    src: url("https://rento2177.github.io/sydx/uzura.ttf");
-}
-
 body {
-    font-family: MyFont;
-        @media screen and (min-width: 600px) {
-            margin-left: 50px;
-        }
+    margin: 0;
+    background: #eee;
 }
-
+main#top {
+    width: 100%;
+    height: 85px;
+    background: #fff;
+    padding-top: 5px;
+    padding-left: 10px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+#middle {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    background: #fff;
+    border-radius: 8px;
+}
+#detahtml {
+    display: none;
+}
+h2.siteName {
+    font-family: serif;
+    width: 170px;
+    height: 35px;
+    margin: 0;
+    float: left;
+    background: #0a0;
+    color: #fff;
+    font-size: 23px;
+    text-align: center;
+    border-radius: 8px;
+}
+div.ver {
+    float: right;
+    margin-right: 20px;
+}
+.loading {
+    position: relative;
+    top: 0;
+}
 ul {
     list-style: none;
+    padding-left: 20px;
 }
-
-li {
-    padding: 4px;
+.header {
+    display: flex;
+    padding: 0;
+    margin-top: 30px;
+    font-size:smaller;
+    @media screen and (max-width: 600px) {
+        margin-top: 35px;
+    }
 }
-
-div#i {
-    float: left;
-    color: red;
+.detail {
+    padding: 0;
+    font-size: small;
+    color: #666;
 }
-
+.header li {
+    margin-left: 30px;
+    color: #444;
+    text-shadow: 0.05em 0.05em 0.1em #444;
+}
+.detail a {
+    color: Green;
+}
 input[type="number"], input[type="text"] {
-    margin-left: 4px;
-    padding-left: 4px;
-    border-radius: 4px;
     height: 20px;
-    width: 200px;
-}
-
-input[type="button"].info {
-    line-height:27px;
-    display:block;
-    width: 15%;
-        @media screen and (max-width: 600px) {
-            width: 45%;
-        }
-    height:100%;
-    text-decoration: none;
-    background: #f3fdff;
-    text-align:center;
-    border:2px solid #1e00ff;
-    color: #07299e;
-    font-size:17px;
-    font-weight:bold;
-    border-radius:35px;
-    -webkit-border-radius:35px;
-    -moz-border-radius:35px;
-    box-shadow:0px 0px 0px 0px #FFFFFF inset;
-    transition: all 0.1s ease;
-}
-
-input[type="button"].info:hover {
-    background:#FFFFFF;
-    color:#2B1EFF;
-    margin-left:0px;
-    margin-top:0px;
-    border:2px solid #0804ff;
-    box-shadow:none;
-}
-
-input[type="button"].copyText {
-    background: whitesmoke;
-    color: black;
-    margin-left:0px;
-    margin-top:0px;
-    border:1px solid #0804ff;
+    margin: 10px;
+    padding-left: 5px;
+    font-size: medium;
+    border: none;
     border-radius: 5px;
-    box-shadow:none;
+    border: 1px solid LightGray;
+    border-right: 2px solid Black;
+    border-bottom: 2px solid Black;
+    @media screen and (max-width: 600px) {
+        width: 150px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 }
-
-button {
-    font-family: MyFont;
-    background-color: white;
-    text-align: center;
-    margin-left: 20px;
-    height: 20px;
-    width: 100px;
-    font-size: 14px;
-    letter-spacing: 1px;
-    border-radius: 5px;
+input[type="button"] {
+    width: 110px;
+    height: 30px;
+    margin-bottom: 20px;
+    font-size: medium;
+    background: #dfb;
+    border: none;
+    border: 1px solid Gray;
+    border-radius: 8px;
+    @media screen and (max-width: 600px) {
+        margin-top: 20px;
+    }
 }
