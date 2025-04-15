@@ -115,7 +115,7 @@ const page = p => {
 }
 
 const form = () => {
-    window.open("https://docs.google.com/forms/d/e/1FAIpQLScskj46IyFUC5uCtPBgs6AfMO32Q7AmWXL3_6cDGlR0p41qeQ/viewform");
+    alert("削除済");
 }
 
 const autofill = (x, y) => {
@@ -126,5 +126,5 @@ const autofill = (x, y) => {
         name = x + "+" + y;
     }
     console.log(month + day, name);
-    window.open("https://docs.google.com/forms/d/e/1FAIpQLSem4iuEYkCagvVodYU0YgbEFumiFUyvMOAvh8NPd9KsgPnnzA/viewform?entry.81919075=" + month + day + "&entry.718367099=ｉ１&entry.558922306=" + name + "&entry.733240652=出席+※見学含む");
+    alert("削除済");
 }
